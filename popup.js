@@ -1,10 +1,12 @@
 
 document.getElementById('btnSaveKeyWords').onclick = function () {
     chrome.storage.sync.set({ "data": document.getElementById('keyWords').value }), function () {
+
         if (chrome.runtime.error) {
             console.log("Runtime error.");
         }
     };
+    // alert(document.getElementById('keyWords').value)
     window.close();
 };
 
