@@ -1,12 +1,7 @@
 
 chrome.storage.sync.get("data", function (items) {
-    // alert(items.data)
-    if (!chrome.runtime.error) {
-        var filter = items.data.split(",");
-        for (var i = 0; i < filter.length; i++) {
-            filter[i] = filter[i].trim();
-        }
-    }
+
+    var filter = preprocess_items(items)
     // match the search keyword user just typed
     var searchbar_txt = document.documentElement.outerHTML.toLowerCase().match('(?<=title>)(.*)(?= - google)')[0];
 

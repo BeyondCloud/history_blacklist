@@ -1,18 +1,16 @@
-chrome.runtime.onStartup.addListener(function () {
-    // initialize blacklist
-    chrome.storage.sync.set({ "data": blacklist });
-    // add listener
+//第一次的初始化：extension初次載入時
 
+chrome.runtime.onInstalled.addListener(function () {
+    chrome.storage.sync.set({ "data": blacklist });
+    main();
+});
+chrome.runtime.onStartup.addListener(function () {
+    main();
+});
+function main() {
     var filter;
     chrome.storage.sync.get("data", function (items) {
-        if (!chrome.runtime.error) {
-            if (items.data == null) { alert("checkURL error: items is null!") }
-            filter = items.data.split(",");
-            for (var i = 0; i < filter.length; i++) {
-                filter[i] = filter[i].trim();
-            }
-        }
-
+        filter = preprocess_items(items)
     });
     chrome.storage.onChanged.addListener(function (changes, namespace) {
         for (let [data, { oldValue, newValue }] of Object.entries(changes)) {
@@ -33,9 +31,7 @@ chrome.runtime.onStartup.addListener(function () {
             }
         }
     );
-
-});
-
+}
 
 function blacklistet(s, filter) {
     s = s.toLowerCase();
@@ -47,12 +43,12 @@ function blacklistet(s, filter) {
     return false;
 }
 
-// function preprocess_items(items) {
-//     if (!chrome.runtime.error) {
-//         var filter = items.data.split(",");
-//         for (var i = 0; i < filter.length; i++) {
-//             filter[i] = filter[i].trim();
-//         }
-//     }
-//     return filter
-// }
+function preprocess_items(items) {
+    if (!chrome.runtime.error) {
+        var filter = items.data.split(",");
+        for (var i = 0; i < filter.length; i++) {
+            filter[i] = filter[i].trim();
+        }
+    }
+    return filter
+}
