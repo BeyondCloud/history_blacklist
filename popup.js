@@ -5,10 +5,10 @@ document.getElementById('btnSaveKeyWords').onclick = function () {
         if (chrome.runtime.error) {
             console.log("Runtime error.");
         }
-        alert(document.getElementById('keyWords').value)
+        // alert(document.getElementById('keyWords').value)
     });
-
-    // window.close();
+    alert("Filter updated!:" + document.getElementById('keyWords').value)
+    window.close();
 };
 
 document.body.onload = function () {
