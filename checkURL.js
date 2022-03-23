@@ -22,14 +22,9 @@ function main() {
     });
     chrome.history.onVisited.addListener(
         function (v_item) {
-            var match_result = v_item.title.match('(.*)(?= - Google)');
-            if (match_result == null) {
-                return;
-            }
-            var pure_title = match_result[0];
-            if (pure_title) {
-                if (blacklistet(pure_title, filter)) { chrome.history.deleteUrl({ url: v_item.url }); }
-                else if (blacklistet(v_item.url, filter)) {
+            if (v_item.title) {
+                if (blacklistet(v_item.title, filter) ||
+                    blacklistet(v_item.url, filter)) {
                     chrome.history.deleteUrl({ url: v_item.url });
                 }
             }
