@@ -11,7 +11,6 @@
         "16": "icon.png",
         "48": "icon.png"
     },
-    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlDJ5LIKhcT1BUOa6MsFQc2N1+meu21v6LhBo8DbYjCC7ENNmoB+1k7FpoqFjcoinKlEd66wj4gvx5xRu5sCd0OTpepuyMpBwT9ksoavF+IRDdYIf6VeSmeoSZoGqlloWbes1RpNL24qmpGnWUiZSW+cr3FPUK6wsUYixeySVpzk7KFhNQ7+M76ImqNG8auqTaVEbTXUCkbecCkaowyK0ks+HZKQsctie368l1gPN90sqdVjzUXYxeX9n4/PQlLFJB66hGXyerOgBjw1kIx1f8ScZUAHUHLfGt5bVJVD5nyYoUwKbGO/eXKj960OT9tFnqkJsOs6SNryxlqNWWa487QIDAQAB",
     "manifest_version": 2,
     "name": "Browser History Filter",
     "options_page": "popup.html",

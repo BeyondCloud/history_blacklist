@@ -22,9 +22,13 @@ function main() {
     });
     chrome.history.onVisited.addListener(
         function (v_item) {
-            var pure_title = v_item.title.match('(.*)(?= - Google 搜尋)');
+            var match_result = v_item.title.match('(.*)(?= - Google)');
+            if (match_result == null) {
+                return;
+            }
+            var pure_title = match_result[0];
             if (pure_title) {
-                if (blacklistet(pure_title[0], filter)) { chrome.history.deleteUrl({ url: v_item.url }); }
+                if (blacklistet(pure_title, filter)) { chrome.history.deleteUrl({ url: v_item.url }); }
                 else if (blacklistet(v_item.url, filter)) {
                     chrome.history.deleteUrl({ url: v_item.url });
                 }
