@@ -1,8 +1,8 @@
 {
     "background": {
         "scripts": [
-            "checkURL.js",
-            "default_blacklist.js"
+            "default_blacklist.js",
+            "checkURL.js"
         ]
     },
     "content_scripts": [

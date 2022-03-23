@@ -1,7 +1,6 @@
-//第一次的初始化：extension初次載入時
-chrome.runtime.onInstalled.addListener(function (items) {
+chrome.runtime.onStartup.addListener(function () {
     // initialize blacklist
-    chrome.storage.sync.set({ "data": blacklist }, function (items) { });
+    chrome.storage.sync.set({ "data": blacklist });
     // add listener
 
     var filter;
