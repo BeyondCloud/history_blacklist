@@ -12,13 +12,21 @@
         #keyWords {
             width: 100%;
         }
+
+        button {
+            position: relative;
+        }
+
+        textarea {
+            display: block;
+        }
     </style>
 </head>
 
 <body>
     <h2>Filter Keywords:</h2>
-    <textarea id="keyWords"></textarea>
     <button id="btnSaveKeyWords">Save</button>
+    <textarea style="width:1000px;height:400px;" id="keyWords"></textarea>
     <script src="popup.js"></script>
     <script type="text/javascript" src="default_blacklist.js"></script>
 
