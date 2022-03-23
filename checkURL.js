@@ -23,6 +23,7 @@ function main() {
     chrome.history.onVisited.addListener(
         function (v_item) {
             var pure_title = v_item.title.match('(.*)(?= - Google 搜尋)');
+            console.log(v_item.title)
             if (pure_title) {
                 if (blacklistet(pure_title[0], filter)) { chrome.history.deleteUrl({ url: v_item.url }); }
                 else if (blacklistet(v_item.url, filter)) {

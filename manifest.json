@@ -5,16 +5,6 @@
             "checkURL.js"
         ]
     },
-    "content_scripts": [
-        {
-            "js": [
-                "checkContent.js"
-            ],
-            "matches": [
-                "\u003Call_urls>"
-            ]
-        }
-    ],
     "description": "Cleans your History from Sites after visiting by keywords",
     "icons": {
         "128": "icon.png",
