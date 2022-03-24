@@ -9,9 +9,6 @@ chrome.runtime.onStartup.addListener(function () {
 });
 function main() {
     var filter;
-    chrome.storage.sync.get("data", function (items) {
-        filter = preprocess_items(items)
-    });
     chrome.storage.onChanged.addListener(function (changes, namespace) {
         for (let [data, { oldValue, newValue }] of Object.entries(changes)) {
             filter = newValue.split(",");
@@ -24,9 +21,8 @@ function main() {
         function (v_item) {
             var transformed = Traditionalized(v_item.title)
             var transformed_url = Traditionalized(decodeURIComponent(v_item.url))
-            // console.log(transformed_url, blacklistet(transformed, filter) ||
-            //     blacklistet(transformed_url, filter), blacklistet(transformed_url, filter))
-
+            // console.log(v_item.title, blacklistet(transformed_url, filter), v_item.url,
+            //     blacklistet(transformed_url, filter));
             if (blacklistet(transformed, filter) || blacklistet(transformed_url, filter)) {
                 chrome.history.deleteUrl({ url: v_item.url });
             }
@@ -36,13 +32,15 @@ function main() {
 }
 
 function blacklistet(s, filter) {
-    if (!s) {
-        return false;
-    }
+    // if (!s) {
+    //     return false;
+    // }
 
     s = s.toLowerCase();
+    // console.log(s);
     for (var i = 0; i < filter.length; i++) {
         if (s.search(filter[i]) >= 0) {
+            // console.log(s, s.search(filter[i]))
             return true;
         }
     }
